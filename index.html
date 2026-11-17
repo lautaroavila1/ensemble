@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ensemble · Tu estudio de video con IA</title>
+<meta name="description" content="Ensemble es una app para tu computadora: describes el video que quieres y una IA lo arma a la vista, paso a paso. Noticieros, documentales, reels de comedia, explicativos en 3D y más.">
+<meta property="og:title" content="Ensemble · Tu estudio de video con IA">
+<meta property="og:description" content="Describes el video y una IA lo arma a la vista, paso a paso.">
+<meta property="og:image" content="icon.png">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #262624; --panel: #2c2b29; --panel-2: #30302e; --line: #3d3c38; --line-2: #4a4945;
+    --text: #f5f4ee; --muted: #a8a59b; --suave: #cfc6b4;
+    --amber: #d97757; --amber-2: #b5583a; --amber-hover: #9f4c32; --sobre-ambar: #fff;
+    --sombra: 0 20px 60px rgb(0 0 0 / .35);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme='dark']) {
+      --bg: #faf9f5; --panel: #f3f1ea; --panel-2: #fff; --line: #e6e3d9; --line-2: #d6d2c6;
+      --text: #1f1e1d; --muted: #6f6b62; --suave: #3d3a35;
+      --amber: #b14f2f; --amber-2: #b5583a; --amber-hover: #9f4c32;
+      --sombra: 0 20px 60px rgb(0 0 0 / .1);
+      color-scheme: light;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 Inter, 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .serif { font-family: 'Source Serif 4', Georgia, serif; font-weight: 500; letter-spacing: -0.015em; }
+  .ancho { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+  header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  header .ancho { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .marca { display: flex; align-items: center; gap: 10px; font-size: 20px; text-decoration: none; }
+  .marca img { width: 28px; height: 28px; }
+  header nav { margin-left: auto; display: flex; gap: 22px; align-items: center; font-size: 14.5px; color: var(--muted); }
+  header nav a { text-decoration: none; }
+  header nav a:hover { color: var(--text); }
+  @media (max-width: 640px) { header nav a.ocultable { display: none; } }
+
+  .boton { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: 12px; background: var(--amber-2); color: var(--sobre-ambar); font-weight: 600; text-decoration: none; transition: background .15s, transform .15s; border: 0; cursor: pointer; font: inherit; font-weight: 600; }
+  .boton:hover { background: var(--amber-hover); transform: translateY(-1px); }
+  .boton svg { width: 20px; height: 20px; flex: none; }
+  .boton.chico { padding: 8px 14px; font-size: 14px; border-radius: 10px; }
+  .boton.contorno { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+  .boton.contorno:hover { background: var(--panel); }
+
+  .portada { padding: 88px 0 56px; text-align: center; position: relative; overflow: hidden; }
+  .portada::before { content: ''; position: absolute; inset: -40% -10% auto; height: 520px; background: radial-gradient(closest-side, rgb(49 134 255 / .16), transparent), radial-gradient(closest-side at 70% 50%, rgb(252 65 61 / .12), transparent), radial-gradient(closest-side at 30% 60%, rgb(255 187 0 / .1), transparent); z-index: -1; filter: blur(20px); }
+  .portada .logo { width: 96px; height: 96px; animation: entrar .7s cubic-bezier(.2,.8,.2,1); }
+  @keyframes entrar { from { opacity: 0; transform: scale(.82) rotate(-14deg); } }
+  .portada h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 22px 0 18px; }
+  .portada h1 em { font-style: italic; color: var(--amber); }
+  .portada p.lema { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 32px; }
+  .descarga { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .descarga small { color: var(--muted); font-size: 13.5px; }
+  .otros { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+
+  .muestra { margin: 56px auto 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; max-width: 980px; }
+  .muestra figure { margin: 0; border-radius: 14px; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid var(--line); box-shadow: var(--sombra); transition: transform .3s; }
+  .muestra figure:nth-child(odd) { transform: translateY(14px); }
+  .muestra figure:hover { transform: translateY(-4px); }
+  .muestra img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 760px) { .muestra { grid-template-columns: repeat(4, 1fr); } .muestra figure:nth-child(n+5) { display: none; } }
+
+  section { padding: 80px 0; }
+  section h2 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.15; margin: 0 0 14px; }
+  section .intro { color: var(--muted); max-width: 620px; margin: 0 0 40px; font-size: 17px; }
+  .centro { text-align: center; } .centro .intro { margin-inline: auto; }
+
+  .estilos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .estilo { display: flex; gap: 14px; padding: 14px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+  .estilo img { width: 72px; height: 96px; border-radius: 10px; object-fit: cover; flex: none; }
+  .estilo h3 { margin: 2px 0 4px; font-size: 16px; }
+  .estilo p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; counter-reset: paso; }
+  .paso { padding: 26px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line); }
+  .paso::before { counter-increment: paso; content: counter(paso); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--amber-2); color: #fff; font-weight: 700; margin-bottom: 16px; }
+  .paso h3 { margin: 0 0 6px; font-size: 18px; }
+  .paso p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .ventajas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; }
+  .ventaja svg { width: 26px; height: 26px; color: var(--amber); margin-bottom: 10px; }
+  .ventaja h3 { margin: 0 0 6px; font-size: 17px; }
+  .ventaja p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .preguntas { max-width: 760px; margin-inline: auto; }
+  details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  summary { cursor: pointer; font-weight: 600; font-size: 16.5px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::after { content: '+'; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  .final { margin: 0 auto 80px; padding: 56px 24px; border-radius: 24px; text-align: center; background: var(--panel); border: 1px solid var(--line); }
+  .final img { width: 56px; height: 56px; }
+  .final h2 { margin: 14px 0 22px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13.5px; }
+  footer .ancho { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header>
+  <div class="ancho">
+    <a class="marca serif" href="#"><img src="icon.png" alt="">Ensemble</a>
+    <nav>
+      <a class="ocultable" href="#estilos">Estilos</a>
+      <a class="ocultable" href="#como">Cómo funciona</a>
+      <a class="ocultable" href="#preguntas">Preguntas</a>
+      <a class="boton chico" href="#descargar" data-descarga>Descargar</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="portada">
+    <div class="ancho">
+      <img class="logo" src="icon.png" alt="Logo de Ensemble">
+      <h1 class="serif">Cuéntale tu idea.<br><em>Mira tu video armarse.</em></h1>
+      <p class="lema">Ensemble es un estudio de video en tu computadora: eliges un estilo, describes lo que quieres y una IA lo arma a la vista, paso a paso, con tu voz, tus imágenes y tu marca.</p>
+      <div class="descarga" id="descargar">
+        <a class="boton" href="https://github.com/lautaroavila1/ensemble/releases/latest/download/Ensemble-Setup.exe" data-descarga>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zM11.5 4.3 21 3v8.5h-9.5zM3 12.5h7.5v7.1L3 18.5zM11.5 12.5H21V21l-9.5-1.3z"/></svg>
+          Descargar para Windows
+        </a>
+        <small id="version">Windows 10 y 11 · 64 bits</small>
+        <span class="otros">Mac y Linux, muy pronto.</span>
+      </div>
+      <div class="muestra" aria-hidden="true">
+        <figure><img src="estilos/el-diff.svg" alt=""></figure>
+        <figure><img src="estilos/video-explicativo.svg" alt=""></figure>
+        <figure><img src="estilos/reel-collage.svg" alt=""></figure>
+        <figure><img src="estilos/video-documental.svg" alt=""></figure>
+        <figure><img src="estilos/video-low-poly.svg" alt=""></figure>
+        <figure><img src="estilos/frutinovela.svg" alt=""></figure>
+        <figure><img src="estilos/nuevo-estilo.svg" alt=""></figure>
+      </div>
+    </div>
+  </div>
+
+  <section id="estilos">
+    <div class="ancho">
+      <h2 class="serif">Un estilo para cada video</h2>
+      <p class="intro">Cada estilo es una card: la eliges, le cuentas el tema y la IA hace el resto. Y si ninguno es lo que buscas, crea el tuyo.</p>
+      <div class="estilos">
+        <div class="estilo"><img src="estilos/el-diff.svg" alt=""><div><h3>Noticiero</h3><p>Tu noticiero para TikTok o YouTube, con tu nombre, tu sello y la prueba de cada dato a la vista.</p></div></div>
+        <div class="estilo"><img src="estilos/video-explicativo.svg" alt=""><div><h3>Video explicativo</h3><p>Cualquier tema explicado en un mundo 3D que la cámara recorre sin cortes, con el texto palabra por palabra.</p></div></div>
+        <div class="estilo"><img src="estilos/reel-collage.svg" alt=""><div><h3>Reel de comedia</h3><p>Un sketch absurdo con un experto muy serio, tus poses recortadas sobre fotos reales y la voz que elijas.</p></div></div>
+        <div class="estilo"><img src="estilos/video-documental.svg" alt=""><div><h3>Documental</h3><p>Tu grabación hablando a cámara convertida en documental, con material real en cada frase.</p></div></div>
+        <div class="estilo"><img src="estilos/video-low-poly.svg" alt=""><div><h3>Low-Poly</h3><p>Un proceso contado en un mundo en miniatura de papel facetado que brota etapa por etapa.</p></div></div>
+        <div class="estilo"><img src="estilos/frutinovela.svg" alt=""><div><h3>Frutinovela</h3><p>Una telenovela de frutas en 3D, con sus propias voces, drama y un final que pide la siguiente parte.</p></div></div>
+        <div class="estilo"><img src="estilos/nuevo-estilo.svg" alt=""><div><h3>Tu propio estilo</h3><p>Cuéntale el video que quieres, o pásale ejemplos, y Ensemble arma un estilo nuevo, listo para usar.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="ancho centro">
+      <h2 class="serif">Empieza en tres pasos</h2>
+      <p class="intro">Sin configurar nada a mano: la app baja sola lo que necesita.</p>
+      <div class="pasos" style="text-align:left">
+        <div class="paso"><h3>Descarga e instala</h3><p>Baja el instalador, ábrelo y sigue los pasos. Ensemble queda en tu menú de inicio.</p></div>
+        <div class="paso"><h3>Conecta tu IA</h3><p>Entra con la cuenta que ya tienes: Claude, ChatGPT, Grok, Cursor o la opción gratis de OpenCode. Se autoriza una sola vez en el navegador.</p></div>
+        <div class="paso"><h3>Elige un estilo y pide tu video</h3><p>Escríbele o dícteselo con el micrófono. Ves cada etapa mientras se arma y puedes corregir en el camino.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="ancho">
+      <h2 class="serif">Hecho para crear, no para configurar</h2>
+      <p class="intro">Todo corre en tu computadora, con tus cuentas.</p>
+      <div class="ventajas">
+        <div class="ventaja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><h3>Tus cosas, en tu equipo</h3><p>Tus videos, tus voces y tus chats se guardan en tu computadora, no en un servidor ajeno.</p></div>
+        <div class="ventaja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg><h3>Con tu voz</h3><p>Clona tu voz o elige una de ElevenLabs, Fish Audio o Google, y dicta en el chat en vez de escribir.</p></div>
+        <div class="ventaja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg><h3>Siempre al día</h3><p>Cuando sale una versión nueva, la app te avisa y se actualiza con un clic, sin perder nada.</p></div>
+        <div class="ventaja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg><h3>Modo claro y oscuro</h3><p>Sigue al de tu sistema o elige el que prefieras.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="ancho">
+      <h2 class="serif centro">Preguntas frecuentes</h2>
+      <div class="preguntas">
+        <details><summary>¿Qué necesito para usarla?</summary><p>Una computadora con Windows 10 u 11 de 64 bits y una cuenta de alguna IA (Claude, ChatGPT, Grok, Cursor), o la opción gratis de OpenCode. Con una tarjeta NVIDIA algunas cosas van más rápido, pero no hace falta.</p></details>
+        <details><summary>Windows dice «Windows protegió su PC». ¿Es seguro?</summary><p>Sale con las apps nuevas que todavía no tienen firma digital. Toca «Más información» y luego «Ejecutar de todas formas». El instalador se baja directo de las versiones oficiales de Ensemble en GitHub.</p></details>
+        <details><summary>¿Cómo se actualiza?</summary><p>Sola: al abrirla y cada rato, Ensemble mira si hay una versión nueva. Cuando la hay, aparece «Actualizar»: la baja, se cierra, se instala y vuelve a abrir. Tus videos y tus ajustes se quedan.</p></details>
+        <details><summary>¿Cuánto ocupa?</summary><p>Al elegir cada estilo o agente, la app baja lo que le falta (por ejemplo, el programa de tu IA o las herramientas de video), una sola vez.</p></details>
+        <details><summary>¿Y en Mac o Linux?</summary><p>Están en camino. Por ahora, Ensemble es para Windows.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="ancho">
+    <div class="final">
+      <img src="icon.png" alt="">
+      <h2 class="serif">Tu próximo video empieza aquí</h2>
+      <a class="boton" href="https://github.com/lautaroavila1/ensemble/releases/latest/download/Ensemble-Setup.exe" data-descarga>Descargar Ensemble para Windows</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="ancho">
+    <span>© <span id="anio">2026</span> Ensemble</span>
+    <span>Basada en <a href="https://github.com/Vancci-sloth/sloth">Sloth</a>, de Vancci (licencia MIT).</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('anio').textContent = new Date().getFullYear()
+  // La versión que se baja, de la última publicada en GitHub. Sin internet o sin respuesta, queda el texto de siempre.
+  fetch('https://api.github.com/repos/lautaroavila1/ensemble/releases/latest')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((v) => {
+      if (!v || !v.tag_name) return
+      const exe = (v.assets || []).find((a) => a.name === 'Ensemble-Setup.exe')
+      const mb = exe ? ` · ${Math.round(exe.size / 1e6)} MB` : ''
+      document.getElementById('version').textContent = `Versión ${v.tag_name.replace(/^v/, '')}${mb} · Windows 10 y 11 · 64 bits`
+    })
+    .catch(() => {})
+</script>
+</body>
+</html>
