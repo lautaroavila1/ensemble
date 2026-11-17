@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <!-- Low-Poly: un mundo en miniatura de papel facetado, con sus etapas marcadas por banderas numeradas. -->
+  <defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ad7f5"/><stop offset=".5" stop-color="#4aa3df"/><stop offset="1" stop-color="#2b6fb3"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#m)"/>
+  <polygon points="30,230 70,170 120,150 180,148 240,170 280,226 230,262 150,272 70,262" fill="#3d8f4c"/>
+  <polygon points="30,230 70,170 90,214" fill="#58ad5c"/><polygon points="70,170 120,150 90,214" fill="#4a9e54"/><polygon points="120,150 180,148 150,205" fill="#6cbf63"/>
+  <polygon points="90,214 120,150 150,205" fill="#7acb6a"/><polygon points="180,148 240,170 210,212" fill="#5aad5a"/><polygon points="150,205 180,148 210,212" fill="#49994f"/>
+  <polygon points="240,170 280,226 210,212" fill="#3f8c48"/><polygon points="30,230 90,214 70,262" fill="#357c40"/><polygon points="90,214 150,205 150,272 70,262" fill="#428a49"/>
+  <polygon points="150,205 210,212 230,262 150,272" fill="#367d41"/><polygon points="210,212 280,226 230,262" fill="#2f7039"/>
+  <polygon points="150,272 70,262 30,230 40,250 80,282 150,292 230,282 270,248 280,226 230,262" fill="#c99a62"/>
+  <polygon points="168,60 212,148 124,148" fill="#8d97a3"/><polygon points="168,60 212,148 176,148" fill="#6d7783"/><polygon points="168,60 186,96 168,92 152,98" fill="#f4f7fa"/>
+  <polygon points="110,96 146,150 78,150" fill="#a3acb6"/><polygon points="110,96 146,150 116,150" fill="#7d8792"/><polygon points="110,96 122,116 108,114 98,118" fill="#fff"/>
+  <path d="M168 150 L172 180 L160 206 L176 236 L170 268" fill="none" stroke="#7fc8f2" stroke-width="7" stroke-linejoin="round"/>
+  <polygon points="236,182 248,206 224,206" fill="#1f5e2b"/><polygon points="252,196 262,216 242,216" fill="#24682f"/><polygon points="60,206 72,228 48,228" fill="#1f5e2b"/>
+  <g font-family="Inter, Segoe UI, sans-serif" font-weight="800" font-size="13" text-anchor="middle" fill="#fff">
+    <path d="M96 196 L96 160" stroke="#fff" stroke-width="3"/><polygon points="96,160 124,168 96,176" fill="#ff6b4a"/><text x="106" y="172">1</text>
+    <path d="M200 194 L200 158" stroke="#fff" stroke-width="3"/><polygon points="200,158 228,166 200,174" fill="#ffc145"/><text x="210" y="170" fill="#5a3c00">2</text>
+    <path d="M150 256 L150 220" stroke="#fff" stroke-width="3"/><polygon points="150,220 178,228 150,236" fill="#ff6b9a"/><text x="160" y="232">3</text>
+  </g>
+</svg>

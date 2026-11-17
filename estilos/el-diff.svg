@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <!-- El Diff: un noticiero seco y burlón. Un presentador con la ceja arriba, en vivo, con su cintillo. -->
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16245a"/><stop offset="1" stop-color="#0b1233"/></linearGradient>
+    <linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b4fd6"/><stop offset="1" stop-color="#1a2f8a"/></linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#f)"/>
+  <path d="M40 0 L110 0 L150 250 Z M190 0 L260 0 L150 250 Z" fill="#fff" opacity=".05"/>
+  <rect x="44" y="52" width="212" height="150" rx="14" fill="#0a0f26" stroke="#3d6bff" stroke-width="4"/>
+  <rect x="54" y="62" width="192" height="130" rx="8" fill="url(#p)"/>
+  <circle cx="150" cy="200" r="70" fill="#fff" opacity=".06"/>
+  <path d="M100 192 C104 160 122 148 150 148 C178 148 196 160 200 192 Z" fill="#1c1f2e"/>
+  <path d="M141 150 L150 176 L159 150 Z" fill="#fff"/>
+  <path d="M147 154 L150 178 L153 154 L150 150 Z" fill="#e5342f"/>
+  <circle cx="150" cy="118" r="25" fill="#f1c29a"/>
+  <path d="M125 114 C125 92 175 92 175 114 C168 104 140 101 125 114 Z" fill="#2a1b12"/>
+  <circle cx="141" cy="119" r="3" fill="#2a1b12"/><circle cx="160" cy="119" r="3" fill="#2a1b12"/>
+  <path d="M135 110 L146 112" stroke="#2a1b12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M154 108 L166 103" stroke="#2a1b12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M143 131 Q151 129 158 132" stroke="#9c4a32" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="54" y="168" width="192" height="24" fill="#e5342f"/>
+  <rect x="54" y="168" width="52" height="24" fill="#ffc21a"/>
+  <rect x="114" y="176" width="70" height="8" rx="4" fill="#fff"/><rect x="190" y="176" width="44" height="8" rx="4" fill="#fff" opacity=".6"/>
+  <rect x="64" y="72" width="44" height="16" rx="4" fill="#e5342f"/>
+  <circle cx="73" cy="80" r="4" fill="#fff"/><rect x="81" y="77" width="21" height="6" rx="3" fill="#fff"/>
+  <path d="M20 250 L280 250 L262 300 L38 300 Z" fill="#2440a8"/>
+  <path d="M20 250 L280 250 L276 262 L24 262 Z" fill="#3d6bff"/>
+</svg>

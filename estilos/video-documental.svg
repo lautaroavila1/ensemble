@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <!-- Documental: material real encontrado, recoloreado (teal, blanco y negro, ámbar) y una palabra roja enorme detrás de ti. -->
+  <defs>
+    <linearGradient id="t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3cc4c0"/><stop offset="1" stop-color="#0c5c63"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6e6"/><stop offset="1" stop-color="#5a5a5a"/></linearGradient>
+    <linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc163"/><stop offset="1" stop-color="#b3561a"/></linearGradient>
+    <pattern id="agujeros" width="26" height="9" patternUnits="userSpaceOnUse"><rect width="12" height="9" rx="2" fill="#0d0d0f"/></pattern>
+  </defs>
+  <rect width="300" height="400" fill="#0d0d0f"/>
+  <g transform="rotate(-10 150 120)">
+    <rect x="-20" y="40" width="340" height="120" fill="#1b1b1e"/>
+    <rect x="-10" y="47" width="330" height="9" fill="url(#agujeros)"/>
+    <rect x="-10" y="144" width="330" height="9" fill="url(#agujeros)"/>
+    <rect x="0" y="62" width="96" height="76" fill="url(#t)"/><path d="M0 138 L30 100 L52 120 L74 92 L96 124 L96 138 Z" fill="#073c42"/>
+    <rect x="104" y="62" width="96" height="76" fill="url(#b)"/><circle cx="152" cy="94" r="16" fill="#2a2a2a"/><path d="M120 138 C126 112 178 112 184 138 Z" fill="#2a2a2a"/>
+    <rect x="208" y="62" width="96" height="76" fill="url(#a)"/><path d="M218 138 L218 96 L238 86 L238 138 Z M246 138 L246 74 L268 74 L268 138 Z M276 138 L276 104 L296 104 L296 138 Z" fill="#6e2e0c"/>
+  </g>
+  <rect x="28" y="198" width="244" height="74" fill="#e0201b"/>
+  <g fill="#fff" opacity=".18"><rect x="40" y="212" width="40" height="46"/><rect x="92" y="212" width="40" height="46"/><rect x="168" y="212" width="40" height="46"/><rect x="220" y="212" width="40" height="46"/></g>
+  <g stroke="#fff" stroke-width="8" paint-order="stroke" stroke-linejoin="round">
+    <path d="M96 330 C100 270 122 252 150 252 C178 252 200 270 204 330 Z" fill="#2d2f36"/>
+    <circle cx="150" cy="226" r="30" fill="#e8b48e"/>
+  </g>
+  <path d="M120 220 C120 194 180 194 180 220 C170 208 132 206 120 220 Z" fill="#1b1310"/>
+  <path d="M250 180 L262 168 M262 190 L278 186 M244 168 L246 152" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+</svg>

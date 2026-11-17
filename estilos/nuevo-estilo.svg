@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <!-- Nuevo estilo: los colores del logo de Ensemble y un + para crear el tuyo. -->
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3186ff"/><stop offset=".35" stop-color="#9a5cff"/><stop offset=".7" stop-color="#fc413d"/><stop offset="1" stop-color="#ffbb00"/></linearGradient>
+    <radialGradient id="b" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#f)"/><rect width="300" height="400" fill="url(#b)"/>
+  <circle cx="150" cy="150" r="58" fill="#fff" opacity=".22"/>
+  <circle cx="150" cy="150" r="42" fill="#fff"/>
+  <path d="M150 128 L150 172 M128 150 L172 150" stroke="#7b4dff" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#fff"><path d="M70 72 L75 86 L89 91 L75 96 L70 110 L65 96 L51 91 L65 86 Z"/><path d="M236 96 L239 105 L248 108 L239 111 L236 120 L233 111 L224 108 L233 105 Z" opacity=".9"/><path d="M224 216 L228 227 L239 231 L228 235 L224 246 L220 235 L209 231 L220 227 Z" opacity=".8"/><path d="M80 214 L83 222 L91 225 L83 228 L80 236 L77 228 L69 225 L77 222 Z" opacity=".7"/></g>
+</svg>

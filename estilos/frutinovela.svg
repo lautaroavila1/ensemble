@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <!-- Frutinovela: una telenovela de frutas con drama. La naranja llora; la frutilla, ofendida. -->
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a1b7a"/><stop offset="1" stop-color="#c2185b"/></linearGradient>
+    <radialGradient id="luz" cx=".5" cy=".35" r=".55"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="n" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffc061"/><stop offset="1" stop-color="#f07c00"/></radialGradient>
+    <radialGradient id="r" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ff6a6a"/><stop offset="1" stop-color="#c8102e"/></radialGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#f)"/><rect width="300" height="400" fill="url(#luz)"/>
+  <path d="M150 62 C140 46 116 48 116 68 C116 86 150 102 150 102 C150 102 184 86 184 68 C184 48 160 46 150 62 Z" fill="#ff8fb7"/>
+  <path d="M150 62 L142 76 L156 84 L146 98" fill="none" stroke="#6a1b7a" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="90" cy="196" r="58" fill="url(#n)"/>
+  <path d="M90 140 C96 124 112 120 122 126 C112 134 100 138 90 140 Z" fill="#3fa34d"/>
+  <ellipse cx="72" cy="190" rx="13" ry="15" fill="#fff"/><ellipse cx="106" cy="190" rx="13" ry="15" fill="#fff"/>
+  <circle cx="76" cy="194" r="7" fill="#1b1b1b"/><circle cx="110" cy="194" r="7" fill="#1b1b1b"/>
+  <circle cx="78" cy="191" r="2.5" fill="#fff"/><circle cx="112" cy="191" r="2.5" fill="#fff"/>
+  <path d="M60 170 L82 176 M100 176 L120 168" stroke="#7a3a00" stroke-width="4" stroke-linecap="round"/>
+  <path d="M78 224 Q90 214 102 224" stroke="#7a3a00" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M64 208 C60 218 58 226 64 230 C70 226 68 218 64 208 Z" fill="#7fd4ff"/>
+  <path d="M212 128 C258 128 276 160 268 200 C260 240 232 268 212 272 C192 268 164 240 156 200 C148 160 166 128 212 128 Z" fill="url(#r)"/>
+  <path d="M184 132 C192 116 206 120 212 128 C218 116 234 114 242 132 C230 128 220 134 212 134 C204 134 194 128 184 132 Z" fill="#3fa34d"/>
+  <g fill="#ffe27a"><ellipse cx="182" cy="160" rx="2.5" ry="4"/><ellipse cx="242" cy="164" rx="2.5" ry="4"/><ellipse cx="176" cy="214" rx="2.5" ry="4"/><ellipse cx="250" cy="214" rx="2.5" ry="4"/><ellipse cx="212" cy="250" rx="2.5" ry="4"/><ellipse cx="192" cy="240" rx="2.5" ry="4"/><ellipse cx="234" cy="240" rx="2.5" ry="4"/></g>
+  <ellipse cx="196" cy="186" rx="11" ry="12" fill="#fff"/><ellipse cx="228" cy="186" rx="11" ry="12" fill="#fff"/>
+  <circle cx="192" cy="189" r="6" fill="#1b1b1b"/><circle cx="224" cy="189" r="6" fill="#1b1b1b"/>
+  <path d="M182 168 L204 178 M220 178 L242 168" stroke="#5c0a18" stroke-width="5" stroke-linecap="round"/>
+  <path d="M200 220 Q212 212 224 220" stroke="#5c0a18" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
